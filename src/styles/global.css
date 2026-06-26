@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-[#0a0a0f] text-white antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+}
+
+@layer components {
+  .font-display {
+    font-family: 'Space Grotesk', 'Inter', system-ui, sans-serif;
+    font-weight: 600;
+    letter-spacing: -0.025em;
+  }
+
+  .hero-bg {
+    background-image: linear-gradient(rgba(10, 10, 15, 0.68), rgba(10, 10, 15, 0.75)),
+      url('https://imagedelivery.net/-sPAUAWeA405NiWJ0SNIQA/4b7071f3-bd76-48c7-9a52-c8635f273f00/public');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+  }
+
+  .glass {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .section-header {
+    font-size: clamp(2.25rem, 5vw, 3.25rem);
+    line-height: 1.05;
+    font-weight: 600;
+    letter-spacing: -0.04em;
+  }
+
+  .nav-scrolled {
+    background: rgba(10, 10, 15, 0.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .nav-link {
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .nav-link:hover {
+    color: #22f5ff;
+    transform: translateY(-1px);
+  }
+
+  .domain-text {
+    font-size: clamp(2.75rem, 8vw, 5.5rem);
+    line-height: 0.92;
+    font-weight: 700;
+    letter-spacing: -0.065em;
+    background: linear-gradient(90deg, #ffffff, #e0e7ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .modern-card {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+      box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+      border-color 0.3s ease;
+  }
+
+  .modern-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+    border-color: rgba(34, 245, 255, 0.3);
+  }
+
+  .form-input {
+    transition: all 0.2s ease;
+  }
+
+  .form-input:focus {
+    outline: none;
+    border-color: #22f5ff;
+    box-shadow: 0 0 0 3px rgba(34, 245, 255, 0.1);
+  }
+
+  .gradient-cta {
+    background: linear-gradient(135deg, #22f5ff 0%, #a855f7 100%);
+  }
+}

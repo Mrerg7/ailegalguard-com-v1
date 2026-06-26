@@ -1,0 +1,133 @@
+---
+import { SITE } from '../consts';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = SITE.title,
+  description = SITE.description,
+} = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, SITE.url).href;
+
+const OG_IMAGE = 'https://imagedelivery.net/-sPAUAWeA405NiWJ0SNIQA/4b7071f3-bd76-48c7-9a52-c8635f273f00/public';
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: SITE.name,
+    url: SITE.url,
+    description,
+    inLanguage: 'en-US',
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: `${SITE.name} — Premium Domain Name`,
+    description:
+      'The definitive domain for AI-related legal issues. The first name professionals type when they need trusted guidance on AI law, compliance, and protection.',
+    url: SITE.url,
+    category: 'Domain Name',
+    brand: {
+      '@type': 'Brand',
+      name: SITE.name,
+    },
+    offers: {
+      '@type': 'Offer',
+      url: SITE.url,
+      price: '9997.00',
+      priceCurrency: 'USD',
+      availability: 'https://schema.org/InStock',
+      priceValidUntil: '2027-12-31',
+      seller: {
+        '@type': 'Organization',
+        name: 'Desert Rich',
+        email: SITE.acquisitionEmail,
+      },
+      hasMerchantReturnPolicy: {
+        '@type': 'MerchantReturnPolicy',
+        returnPolicyCategory: 'https://schema.org/MerchantReturnNotPermitted',
+        returnMethod: 'https://schema.org/ReturnByMail',
+        applicableCountry: 'US',
+        merchantReturnDays: 0,
+      },
+      shippingDetails: {
+        '@type': 'OfferShippingDetails',
+        shippingRate: {
+          '@type': 'MonetaryAmount',
+          value: 0,
+          currency: 'USD',
+        },
+        deliveryTime: {
+          '@type': 'ShippingDeliveryTime',
+          handlingTime: {
+            '@type': 'QuantitativeValue',
+            minValue: 1,
+            maxValue: 3,
+            unitCode: 'DAY',
+          },
+          transitTime: {
+            '@type': 'QuantitativeValue',
+            minValue: 0,
+            maxValue: 0,
+            unitCode: 'DAY',
+          },
+        },
+        shippingDestination: {
+          '@type': 'DefinedRegion',
+          addressCountry: 'US',
+        },
+      },
+    },
+    image: OG_IMAGE,
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: SITE.name,
+    url: SITE.url,
+    logo: OG_IMAGE,
+    contactPoint: {
+      '@type': 'ContactPoint',
+      contactType: 'sales',
+      email: SITE.acquisitionEmail,
+      availableLanguage: 'English',
+    },
+  },
+];
+---
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="canonical" href={canonical} />
+<title>{title}</title>
+<meta name="description" content={description} />
+<meta name="robots" content="index, follow" />
+<meta name="theme-color" content="#0a0a0f" />
+
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content={SITE.name} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonical} />
+<meta property="og:locale" content={SITE.locale} />
+<meta property="og:image" content={OG_IMAGE} />
+<meta property="og:image:secure_url" content={OG_IMAGE} />
+<meta property="og:image:alt" content={`${SITE.name} — Premium domain for AI law, compliance, and legal protection`} />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={OG_IMAGE} />
+<meta name="twitter:image:alt" content={`${SITE.name} — Premium domain for AI law, compliance, and legal protection`} />
+
+<link rel="icon" href="https://imagedelivery.net/-sPAUAWeA405NiWJ0SNIQA/4b7071f3-bd76-48c7-9a52-c8635f273f00/public" />
+<link rel="apple-touch-icon" href="https://imagedelivery.net/-sPAUAWeA405NiWJ0SNIQA/4b7071f3-bd76-48c7-9a52-c8635f273f00/public" />
+
+<script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} />

@@ -1,0 +1,366 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { ACQUISITION_MAILTO, SITE } from '../consts';
+import { getCollection } from 'astro:content';
+
+const siteData = await getCollection('site');
+const { useCases = [], whyCards = [] } = siteData[0]?.data ?? {};
+---
+
+<BaseLayout>
+  <!-- Hero Section -->
+  <header class="hero-bg min-h-[100dvh] flex items-center relative pt-20">
+    <div class="max-w-5xl mx-auto px-6 pb-16 pt-12 md:pt-8 text-center relative z-10">
+      <!-- Premium Badge -->
+      <div class="inline-flex items-center gap-x-2 px-4 py-1.5 rounded-full border border-white/10 bg-white/5 mb-8">
+        <div class="w-1.5 h-1.5 bg-[#22f5ff] rounded-full animate-pulse"></div>
+        <span class="text-xs font-semibold tracking-[1.5px] text-white/80">PREMIUM .COM DOMAIN</span>
+      </div>
+
+      <!-- Domain Name -->
+      <h1 class="domain-text font-display mb-3 tracking-[-0.07em]">
+        ailegalguard.com
+      </h1>
+
+      <!-- Tagline -->
+      <p class="max-w-2xl mx-auto text-3xl md:text-4xl font-light tracking-tight text-white/90 mb-4">
+        The first name typed<br />
+        when inquiring about AI legal issues.
+      </p>
+
+      <p class="max-w-lg mx-auto text-xl text-white/70 mb-10">
+        Authoritative. Protective. Unmistakable.<br />
+        The definitive digital address for AI law, compliance &amp; protection.
+      </p>
+
+      <!-- CTAs -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a
+          href={ACQUISITION_MAILTO}
+          class="group w-full sm:w-auto inline-flex items-center justify-center gap-x-3 px-9 py-4 text-lg font-semibold rounded-3xl transition-all active:scale-[0.985] no-underline gradient-cta text-[#0a0a0f] hover:brightness-110 shadow-xl shadow-[#22f5ff]/20"
+        >
+          <span>Secure This Asset</span>
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" d="M14 5l7 7-7 7m-4-7h11" />
+          </svg>
+        </a>
+        <a
+          href="#positioning"
+          class="w-full sm:w-auto inline-flex items-center justify-center gap-x-2 px-8 py-4 text-lg font-medium rounded-3xl border border-white/20 hover:bg-white/5 transition-colors no-underline text-white/80"
+        >
+          Explore the Positioning
+        </a>
+      </div>
+
+      <div class="mt-12 flex items-center justify-center gap-x-8 text-xs text-white/50">
+        <div class="flex items-center gap-x-1.5">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 10l7-7m0 0l7 7" />
+          </svg>
+          <span>Instant Transfer</span>
+        </div>
+        <div>Escrow Protected</div>
+        <div>Built for Authority</div>
+      </div>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="absolute bottom-10 left-1/2 -translate-x-1/2 hidden md:block">
+      <div class="flex flex-col items-center gap-y-1 text-[10px] tracking-widest text-white/40">
+        <div>SCROLL TO BEGIN</div>
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 animate-bounce" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7" />
+        </svg>
+      </div>
+    </div>
+  </header>
+
+  <!-- The Positioning Section -->
+  <section id="positioning" class="max-w-5xl mx-auto px-6 pt-20 pb-16">
+    <div class="grid md:grid-cols-12 gap-x-12 items-center">
+      <div class="md:col-span-7">
+        <div class="inline-block px-3.5 py-1 rounded-full bg-white/5 text-xs tracking-[1.5px] font-medium text-white/60 mb-4">THE POSITIONING</div>
+
+        <h2 class="section-header tracking-[-0.04em] leading-none mb-7">
+          The AI Legal Guardian.
+        </h2>
+
+        <div class="space-y-6 text-lg text-white/80 max-w-[42ch]">
+          <p>
+            As artificial intelligence transforms every industry, a new and urgent category of legal issues has emerged — from data rights and algorithmic bias to liability, intellectual property, and regulatory compliance.
+          </p>
+          <p>
+            <span class="font-semibold text-white">ailegalguard.com</span> is the clear, authoritative, and memorable domain that professionals will naturally type first when they need trusted guidance on AI-related legal matters.
+          </p>
+          <p class="text-white/70">
+            It signals protection, expertise, and immediate relevance in one of the fastest-growing and most complex areas of law today.
+          </p>
+        </div>
+      </div>
+
+      <div class="md:col-span-5 mt-10 md:mt-0">
+        <div class="glass rounded-3xl p-9 md:p-10 border border-white/10">
+          <div class="text-center">
+            <div class="inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-gradient-to-br from-[#22f5ff]/10 to-[#a855f7]/10 border border-white/20 mb-6">
+              <span class="font-display text-xl font-bold tracking-[-1px] bg-gradient-to-br from-[#22f5ff] to-[#a855f7] bg-clip-text text-transparent">AI LEGAL</span>
+            </div>
+
+            <div class="space-y-1">
+              <div class="text-3xl font-bold tracking-tighter">Guard</div>
+              <div class="text-sm text-white/60 tracking-[2px] mt-1">PROTECTION &middot; COMPLIANCE &middot; AUTHORITY</div>
+            </div>
+
+            <div class="mt-8 pt-6 border-t border-white/10 text-sm text-white/60 leading-relaxed">
+              The definitive digital address<br />
+              for AI law and legal protection.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why This Domain Section -->
+  <section id="why" class="bg-white/5 border-y border-white/10 py-16">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-12">
+        <div class="inline-block px-4 py-1 rounded-full bg-white/5 text-xs tracking-[1.5px] font-medium text-white/60 mb-3">WHY THIS DOMAIN</div>
+        <h2 class="section-header tracking-[-0.03em]">Built for trust in a high-stakes field.</h2>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-5">
+        {
+          whyCards.map((card, i) => {
+            const icons = [
+              `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 8.944 11.922a12.024 12.024 0 01-4.462-8.968" />`,
+              `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2.009 2.009 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />`,
+              `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />`,
+            ];
+            const colors = ['text-[#22f5ff]', 'text-[#a855f7]', 'text-emerald-400'];
+            const bgColors = ['bg-[#22f5ff]/10', 'bg-[#a855f7]/10', 'bg-emerald-400/10'];
+            return (
+              <div class="modern-card glass rounded-3xl p-8 border border-white/10">
+                <div class={`w-11 h-11 rounded-2xl ${bgColors[i]} flex items-center justify-center mb-6`}>
+                  <svg xmlns="http://www.w3.org/2000/svg" class={`w-6 h-6 ${colors[i]}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" set:html={icons[i]} />
+                </div>
+                <h3 class="font-semibold text-xl tracking-tight mb-3">{card.title}</h3>
+                <p class="text-white/70 leading-relaxed">{card.description}</p>
+              </div>
+            );
+          })
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Ideal For / Use Cases -->
+  <section id="uses" class="max-w-6xl mx-auto px-6 py-20">
+    <div class="max-w-2xl mb-12">
+      <div class="inline-block px-3.5 py-1 rounded-full bg-white/5 text-xs tracking-[1.5px] font-medium text-white/60 mb-4">IDEAL FOR</div>
+      <h2 class="section-header tracking-[-0.035em] leading-none">The natural home for leaders in AI law.</h2>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+      {
+        useCases.map((useCase) => (
+          <div class="group p-7 rounded-3xl border border-white/10 hover:border-white/20 transition-colors bg-white/[0.015]">
+            <div class="font-mono text-xs tracking-widest text-[#22f5ff] mb-2">
+              {String(useCase.number).padStart(2, '0')}
+            </div>
+            <div class="font-semibold text-lg mb-2 group-hover:text-[#22f5ff] transition-colors">
+              {useCase.title}
+            </div>
+            <p class="text-sm text-white/60">{useCase.description}</p>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- Poignant Closer -->
+  <div class="max-w-3xl mx-auto px-6 text-center py-8 border-y border-white/10">
+    <p class="text-2xl md:text-3xl font-light tracking-tight text-white/90">
+      In the age of artificial intelligence,<br />
+      <span class="font-semibold text-white">protection begins with the right name.</span>
+    </p>
+  </div>
+
+  <!-- Pricing Section -->
+  <section id="pricing" class="max-w-4xl mx-auto px-6 py-20">
+    <div class="text-center mb-10">
+      <div class="inline-block px-4 py-1 rounded-full bg-emerald-400/10 text-emerald-400 text-xs tracking-[1.5px] font-semibold mb-4">ACQUISITION</div>
+      <h2 class="section-header tracking-[-0.03em]">A strategic asset for a defining legal frontier.</h2>
+    </div>
+
+    <div class="glass rounded-3xl p-10 md:p-14 border border-white/10">
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-y-8">
+        <div>
+          <div class="flex items-baseline gap-x-2">
+            <span class="text-7xl font-semibold tracking-tighter">$9,997</span>
+            <span class="text-white/50 text-xl">USD</span>
+          </div>
+          <p class="mt-1 text-white/60">One-time acquisition &middot; Full ownership &amp; instant transfer</p>
+
+          <div class="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-sm">
+            <div class="flex items-center gap-x-2 text-white/70">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
+              </svg>
+              <span>Clean title, ready for transfer</span>
+            </div>
+            <div class="flex items-center gap-x-2 text-white/70">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
+              </svg>
+              <span>Escrow.com protected transaction</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="md:text-right">
+          <a
+            href={ACQUISITION_MAILTO}
+            class="inline-flex w-full md:w-auto items-center justify-center px-10 py-4 rounded-3xl bg-white font-semibold text-[#0a0a0f] text-lg active:scale-[0.985] transition-all hover:bg-white/90 no-underline"
+          >
+            Begin Acquisition
+          </a>
+          <p class="text-xs text-white/50 mt-3 md:mt-2">Serious buyers only. Flexible terms available.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-8 text-center">
+      <p class="text-xs text-white/50 max-w-md mx-auto">
+        Descriptive, brandable .com domains in high-growth specialized fields like AI law command strong long-term value. This asset offers both immediate professional utility and strategic positioning.
+      </p>
+    </div>
+  </section>
+
+  <!-- Inquiry / Contact Section -->
+  <section id="inquire" class="bg-white/5 border-t border-white/10 py-16">
+    <div class="max-w-2xl mx-auto px-6">
+      <div class="text-center mb-10">
+        <h2 class="text-4xl font-semibold tracking-tight">Ready to own the AI Legal Guard?</h2>
+        <p class="mt-3 text-white/70">Submit your inquiry. We respond personally to serious buyers within 24 hours.</p>
+      </div>
+
+      <!-- Form -->
+      <form id="inquiry-form" class="glass rounded-3xl p-8 md:p-10 border border-white/10 space-y-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+          <div>
+            <label class="block text-xs tracking-widest font-medium text-white/60 mb-1.5">FULL NAME</label>
+            <input type="text" id="name" required
+                   class="form-input w-full bg-white/5 border border-white/15 rounded-2xl px-5 py-3.5 text-white placeholder:text-white/40" />
+          </div>
+          <div>
+            <label class="block text-xs tracking-widest font-medium text-white/60 mb-1.5">EMAIL ADDRESS</label>
+            <input type="email" id="email" required
+                   class="form-input w-full bg-white/5 border border-white/15 rounded-2xl px-5 py-3.5 text-white placeholder:text-white/40" />
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs tracking-widest font-medium text-white/60 mb-1.5">ORGANIZATION OR INTENDED USE (OPTIONAL)</label>
+          <input type="text" id="org"
+                 class="form-input w-full bg-white/5 border border-white/15 rounded-2xl px-5 py-3.5 text-white placeholder:text-white/40" />
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+          <div>
+            <label class="block text-xs tracking-widest font-medium text-white/60 mb-1.5">YOUR OFFER (OPTIONAL)</label>
+            <div class="relative">
+              <span class="absolute left-5 top-1/2 -translate-y-1/2 text-white/40">$</span>
+              <input type="text" id="offer" placeholder="9997"
+                     class="form-input w-full bg-white/5 border border-white/15 rounded-2xl pl-8 pr-5 py-3.5 text-white placeholder:text-white/40" />
+            </div>
+          </div>
+          <div>
+            <label class="block text-xs tracking-widest font-medium text-white/60 mb-1.5">TIMELINE</label>
+            <select id="timeline" class="form-input w-full bg-white/5 border border-white/15 rounded-2xl px-5 py-[15px] text-white appearance-none">
+              <option value="" class="bg-[#1a1a2e]">Select preferred timeline</option>
+              <option value="immediate" class="bg-[#1a1a2e]">Immediate (within 7 days)</option>
+              <option value="2weeks" class="bg-[#1a1a2e]">Within 2 weeks</option>
+              <option value="month" class="bg-[#1a1a2e]">Within 30 days</option>
+              <option value="flexible" class="bg-[#1a1a2e]">Flexible / exploring</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs tracking-widest font-medium text-white/60 mb-1.5">MESSAGE OR QUESTIONS</label>
+          <textarea id="message" rows="4" placeholder="What is your vision for ailegalguard.com?"
+                    class="form-input w-full bg-white/5 border border-white/15 rounded-3xl px-5 py-4 text-white placeholder:text-white/40 resize-y min-h-[110px]"></textarea>
+        </div>
+
+        <button type="submit"
+                class="w-full py-4 rounded-3xl gradient-cta font-semibold text-[#0a0a0f] text-lg tracking-[-0.2px] active:scale-[0.985] transition-all hover:brightness-105 border-0 cursor-pointer">
+          Submit Secure Inquiry
+        </button>
+
+        <p class="text-center text-[10px] text-white/50 tracking-wide">Your information is kept confidential. All transactions protected via escrow.</p>
+      </form>
+
+      <!-- Success Message (hidden by default) -->
+      <div id="success-message" class="hidden mt-6 glass rounded-3xl p-8 border border-emerald-400/30 text-center">
+        <div class="mx-auto w-14 h-14 rounded-full bg-emerald-400/10 flex items-center justify-center mb-5">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 10l7-7m0 0l7 7" />
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 21V3" />
+          </svg>
+        </div>
+        <h3 class="text-2xl font-semibold tracking-tight mb-2">Inquiry Received</h3>
+        <p class="text-white/70 max-w-xs mx-auto">Thank you. A member of our team will personally respond within 24 hours to discuss next steps.</p>
+        <button onclick="resetForm()"
+                class="mt-6 text-sm font-medium text-white/60 hover:text-white bg-transparent border-0 underline underline-offset-4 cursor-pointer">Submit another inquiry</button>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  // Smooth scroll for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const targetId = this.getAttribute('href')!.substring(1);
+      const target = document.getElementById(targetId);
+      if (target) {
+        e.preventDefault();
+        const offset = 80;
+        const bodyRect = document.body.getBoundingClientRect().top;
+        const elementPosition = target.getBoundingClientRect().top;
+        const offsetPosition = elementPosition - bodyRect - offset;
+        window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+      }
+    });
+  });
+
+  // Form handling
+  const form = document.getElementById('inquiry-form') as HTMLFormElement;
+  const successMsg = document.getElementById('success-message')!;
+
+  form?.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const submitBtn = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+    const originalText = submitBtn.innerHTML;
+    submitBtn.innerHTML = 'Processing...';
+    submitBtn.disabled = true;
+
+    setTimeout(() => {
+      form.style.display = 'none';
+      successMsg.classList.remove('hidden');
+      successMsg.classList.add('block');
+    }, 850);
+  });
+
+  function resetForm() {
+    successMsg.classList.add('hidden');
+    successMsg.classList.remove('block');
+    form.style.display = 'block';
+    form.reset();
+    const submitBtn = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+    if (submitBtn) {
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = 'Submit Secure Inquiry';
+    }
+  }
+</script>

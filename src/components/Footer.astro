@@ -1,0 +1,78 @@
+---
+import { ACQUISITION_MAILTO, SITE } from '../consts';
+
+interface Props {
+  disclaimer: string;
+}
+
+const { disclaimer } = Astro.props;
+const year = new Date().getFullYear();
+---
+
+<footer id="acquire" class="border-t border-white/10">
+  <div class="mx-auto max-w-6xl px-6 py-20">
+    <!-- Sophisticated CTA Card -->
+    <div class="relative overflow-hidden rounded-[2rem] border border-[#22f5ff]/20 bg-gradient-to-br from-[#0a0a0f] via-[#22f5ff]/5 to-[#0a0a0f] p-10 md:p-14">
+      <div class="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-[#22f5ff]/10 blur-3xl" aria-hidden="true"></div>
+      <div class="pointer-events-none absolute -bottom-24 -left-16 h-72 w-72 rounded-full bg-[#a855f7]/8 blur-3xl" aria-hidden="true"></div>
+
+      <div class="relative grid gap-10 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
+        <div>
+          <p class="mb-3 text-xs font-black uppercase tracking-[3px] text-[#22f5ff]">
+            Domain acquisition
+          </p>
+          <h2 class="font-display text-4xl tracking-tight md:text-5xl text-white">
+            {SITE.name} is available<br />for acquisition
+          </h2>
+          <p class="mt-5 max-w-xl text-lg text-white/60">
+            Serious buyers and strategic acquirers: connect directly for confidential terms,
+            transfer logistics, and flexible closing options. One premium asset. One point of contact.
+          </p>
+          <p class="mt-6 font-mono text-sm text-[#22f5ff]">
+            <a href={ACQUISITION_MAILTO} class="hover:text-white transition-colors no-underline">
+              {SITE.acquisitionEmail}
+            </a>
+          </p>
+        </div>
+
+        <div class="flex flex-col gap-4 sm:flex-row lg:flex-col xl:flex-row">
+          <a
+            href={ACQUISITION_MAILTO}
+            class="inline-flex w-full items-center justify-center gap-x-3 px-9 py-4 text-lg font-semibold rounded-3xl transition-all active:scale-[0.985] no-underline gradient-cta text-[#0a0a0f] hover:brightness-110 shadow-xl shadow-[#22f5ff]/20"
+          >
+            <span>Request acquisition terms</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" d="M14 5l7 7-7 7m-4-7h11" />
+            </svg>
+          </a>
+          <a
+            href={ACQUISITION_MAILTO}
+            class="inline-flex w-full items-center justify-center gap-2 rounded-3xl border border-white/20 px-8 py-4 text-sm font-semibold text-white/80 transition hover:border-white/50 hover:text-white no-underline"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 8.944 11.922a12.024 12.024 0 01-4.462-8.968" />
+            </svg>
+            Escrow-ready · Direct response
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Disclaimer -->
+    <p class="mx-auto mt-12 max-w-4xl text-center text-xs leading-relaxed text-white/40">
+      {disclaimer}
+    </p>
+
+    <!-- Footer Bottom -->
+    <div class="mt-10 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 text-xs text-white/40 md:flex-row">
+      <div>&copy; {year} {SITE.name} — Premium Domain Asset</div>
+      <div class="flex gap-x-6">
+        <a href="/" class="hover:text-white/70 no-underline">Home</a>
+        <a href={ACQUISITION_MAILTO} class="hover:text-white/70 no-underline">Contact for Acquisition</a>
+      </div>
+      <div class="text-[10px] uppercase tracking-wider text-white/30">
+        Demonstration &amp; informational · Updated {SITE.updated}
+      </div>
+    </div>
+  </div>
+</footer>
