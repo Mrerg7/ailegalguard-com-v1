@@ -83,6 +83,24 @@ const jsonLd = [
         },
       },
     },
+    review: {
+      '@type': 'Review',
+      author: {
+        '@type': 'Organization',
+        name: SITE.name,
+      },
+      reviewRating: {
+        '@type': 'Rating',
+        ratingValue: 5,
+        bestRating: 5,
+      },
+    },
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: 5,
+      bestRating: 5,
+      reviewCount: 1,
+    },
     image: OG_IMAGE,
   },
   {
