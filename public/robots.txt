@@ -1,5 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: /404
 Disallow: /404.html
 
 Sitemap: https://ailegalguard.com/sitemap-index.xml

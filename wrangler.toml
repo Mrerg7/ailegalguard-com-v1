@@ -1,7 +1,19 @@
 name = "ailegalguard-com-v1"
+main = "src/worker.ts"
 compatibility_date = "2026-06-01"
 workers_dev = false
 preview_urls = false
 
+[[routes]]
+pattern = "ailegalguard.com"
+custom_domain = true
+
+[[routes]]
+pattern = "www.ailegalguard.com"
+custom_domain = true
+
 [assets]
 directory = "./dist"
+binding = "ASSETS"
+html_handling = "auto-trailing-slash"
+run_worker_first = true

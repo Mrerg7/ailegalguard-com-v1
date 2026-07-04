@@ -3,7 +3,7 @@ export const SITE = {
   title: 'ailegalguard.com | The AI Legal Guardian — Premium Domain',
   description:
     'ailegalguard.com — The first name typed when inquiring about AI legal issues. A premium domain for AI law, compliance, regulation, intellectual property, and legal protection in the age of artificial intelligence.',
-  url: 'https://ailegalguard.com',
+  url: 'https://ailegalguard.com/',
   locale: 'en_US',
   acquisitionEmail: 'sales@desertrich.com',
   updated: '2026-06-26',

@@ -11,7 +11,13 @@ const {
   description = SITE.description,
 } = Astro.props;
 
-const canonical = new URL(Astro.url.pathname, SITE.url).href;
+const pathname =
+  Astro.url.pathname === '/'
+    ? '/'
+    : Astro.url.pathname.endsWith('/')
+      ? Astro.url.pathname
+      : `${Astro.url.pathname}/`;
+const canonical = new URL(pathname, SITE.url).href;
 
 const OG_IMAGE = 'https://imagedelivery.net/-sPAUAWeA405NiWJ0SNIQA/4b7071f3-bd76-48c7-9a52-c8635f273f00/public';
 
