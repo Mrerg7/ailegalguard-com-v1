@@ -27,7 +27,7 @@
       url('https://imagedelivery.net/-sPAUAWeA405NiWJ0SNIQA/4b7071f3-bd76-48c7-9a52-c8635f273f00/public');
     background-size: cover;
     background-position: center;
-    background-attachment: fixed;
+    background-attachment: scroll;
   }
 
   .glass {
