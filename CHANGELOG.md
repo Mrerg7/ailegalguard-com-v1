@@ -69,6 +69,8 @@ All notable changes to ailegalguard.com are documented here.
 - Abuse protection: same-origin check, honeypot field, minimum time-to-submit (1.5s),
   per-IP rate limit (1 write / 60s), `no-store` + `noindex` on API responses. Bots are
   answered with `201`/`200` but nothing is persisted, so quota cannot be drained.
+- Optional `NOTIFY_WEBHOOK` secret: fire-and-forget forward of every stored record to an
+  external endpoint via `ctx.waitUntil`, so submissions are not silently parked in KV.
 - `wrangler.toml`: added the KV binding; bumped `compatibility_date` to `2026-09-15`;
   upgraded `wrangler` to `4.149.0`.
 
@@ -127,7 +129,20 @@ nav/footer around the new content.
 
 ### Not done here (requires owner action)
 
+- **Read incoming inquiries** (stored in Workers KV):
+  ```bash
+  npx wrangler kv key list   --binding INQUIRIES --remote
+  npx wrangler kv key get    --binding INQUIRIES --remote "inq:<timestamp>:<id>"
+  npx wrangler kv key delete --binding INQUIRIES --remote "inq:<timestamp>:<id>"
+  ```
+  Note: `wrangler kv` defaults to **local** storage — `--remote` is required to see
+  production submissions.
+- **Get notified in real time** instead of polling KV: set an email/Slack/Make/Zapier
+  webhook and the Worker will forward every submission after storing it:
+  ```bash
+  npx wrangler secret put NOTIFY_WEBHOOK
+  ```
+  The value is never committed to the repo.
 - Submit `https://ailegalguard.com/sitemap-index.xml` in Google Search Console.
-- Off-page work: DA 40+ outreach, guest posts, digital PR (see README-level notes in the
-  PR/commit body).
+- Off-page work: DA 40+ outreach, guest posts, digital PR (see commit body).
 - Optional: Cloudflare Turnstile on `/api/inquiry` if spam reaches the free-plan write cap.

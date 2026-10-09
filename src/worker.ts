@@ -1,6 +1,9 @@
 interface Env {
   ASSETS: Fetcher;
   INQUIRIES: KVNamespace;
+  /** Optional: set with `wrangler secret put NOTIFY_WEBHOOK` to forward every
+   *  submission (email/Slack/Make/Zapier webhook) in addition to storing it. */
+  NOTIFY_WEBHOOK?: string;
 }
 
 const CANONICAL_HOST = 'ailegalguard.com';
@@ -50,7 +53,12 @@ function str(value: unknown, max: number): string | null {
   return trimmed.slice(0, max);
 }
 
-async function handleInquiry(request: Request, env: Env, url: URL): Promise<Response> {
+async function handleInquiry(
+  request: Request,
+  env: Env,
+  url: URL,
+  ctx: ExecutionContext,
+): Promise<Response> {
   if (request.method === 'OPTIONS') {
     return new Response(null, {
       status: 204,
@@ -157,11 +165,21 @@ async function handleInquiry(request: Request, env: Env, url: URL): Promise<Resp
     return json(503, { ok: false, error: 'storage_unavailable' });
   }
 
+  if (env.NOTIFY_WEBHOOK) {
+    ctx.waitUntil(
+      fetch(env.NOTIFY_WEBHOOK, {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify(record),
+      }).catch(() => undefined),
+    );
+  }
+
   return json(201, { ok: true, id });
 }
 
 export default {
-  async fetch(request: Request, env: Env): Promise<Response> {
+  async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
     const url = new URL(request.url);
     let redirect = false;
 
@@ -180,7 +198,7 @@ export default {
     }
 
     if (url.pathname === '/api/inquiry') {
-      return handleInquiry(request, env, url);
+      return handleInquiry(request, env, url, ctx);
     }
 
     if (url.pathname.startsWith('/api/')) {
