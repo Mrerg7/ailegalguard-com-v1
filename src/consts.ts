@@ -2,13 +2,13 @@ export const SITE = {
   name: 'ailegalguard.com',
   title: 'ailegalguard.com | Premium Domain for Sale | AI Legal Guard',
   description:
-    'ailegalguard.com is for sale at $9,997 — a premium .com domain for AI law, compliance and legal protection. Escrow-protected transfer. Buy now or make an offer.',
+    'ailegalguard.com is for sale at $100,000 — a premium .com domain for AI law, compliance and legal protection. Escrow-protected transfer. Buy now or make an offer.',
   url: 'https://ailegalguard.com/',
   locale: 'en_US',
   acquisitionEmail: 'sales@desertrich.com',
   updated: '2026-10-09',
-  price: '9997.00',
-  priceDisplay: '$9,997',
+  price: '100000.00',
+  priceDisplay: '$100,000',
   currency: 'USD',
 } as const;
 

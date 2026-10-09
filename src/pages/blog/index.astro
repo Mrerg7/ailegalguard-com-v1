@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
+import { SITE } from '../../consts';
 
 const posts = (await getCollection('blog')).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
@@ -67,7 +68,7 @@ const description =
     <div class="mt-14 rounded-3xl border border-[#22f5ff]/20 bg-gradient-to-br from-[#0a0a0f] via-[#22f5ff]/5 to-[#0a0a0f] p-8 text-center sm:p-10">
       <h2 class="text-2xl font-semibold tracking-tight sm:text-3xl">Ready to skip the research?</h2>
       <p class="mx-auto mt-3 max-w-lg text-white/65">
-        ailegalguard.com is a one-of-one asset, listed publicly at $9,997 with escrow-protected transfer.
+        ailegalguard.com is a one-of-one asset, listed publicly at {SITE.priceDisplay} with escrow-protected transfer.
       </p>
       <div class="mt-6 flex flex-col justify-center gap-3 sm:flex-row">
         <a href="/#pricing" class="tap rounded-2xl bg-white px-8 font-semibold text-[#0a0a0f] no-underline transition hover:bg-white/90">

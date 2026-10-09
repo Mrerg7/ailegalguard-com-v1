@@ -2,6 +2,20 @@
 
 All notable changes to ailegalguard.com are documented here.
 
+## [2026-10-09] — Listing price updated to $100,000
+
+- Changed `SITE.price` (`100000.00`) and `SITE.priceDisplay` (`$100,000`) in
+  `src/consts.ts`. Every surface that renders the price pulls from these two fields:
+  hero price chip, `Buy Now` CTA, pricing card, sticky mobile bar, exit-intent checklist
+  offer, footer, FAQ answer, `mailto` subject/body, meta description, and the `Product`
+  structured-data price.
+- Removed the two remaining hardcoded `$9,997` strings in `/blog/` and the article
+  template header; both now use `{SITE.priceDisplay}` so price changes stay one-line.
+- Offer-form `placeholder="9997"` → `placeholder="100000"`; hero price dropped to
+  `text-5xl` on mobile so the longer `$100,000 USD` string fits without overflow.
+- Verified no `9,997` / `9997` strings remain in `dist/` (43 `$100,000` renders,
+  7 `price: "100000.00"` schema values).
+
 ## [2026-10-09] — Comprehensive site optimization
 
 ### Technical foundation
