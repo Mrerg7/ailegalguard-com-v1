@@ -1,0 +1,48 @@
+---
+import { BUY_MAILTO, SITE } from '../consts';
+---
+
+<section
+  id="sticky-cta"
+  class="fixed bottom-0 inset-x-0 z-40 lg:hidden border-t border-white/10 bg-[#0a0a0f]/95 backdrop-blur-md transition-transform duration-300"
+  aria-label="Purchase this domain"
+>
+  <div class="flex items-center gap-3 px-4 py-2.5 pb-[max(0.625rem,env(safe-area-inset-bottom))]">
+    <div class="min-w-0 flex-1">
+      <p class="truncate text-[11px] uppercase tracking-[1.5px] text-white/45">Asking price</p>
+      <p class="truncate text-lg font-semibold leading-tight">
+        {SITE.priceDisplay} <span class="text-xs font-normal text-white/50">USD</span>
+      </p>
+    </div>
+    <a
+      href="/#inquire"
+      class="tap px-4 rounded-2xl border border-white/20 text-sm font-semibold text-white/80 no-underline whitespace-nowrap"
+    >
+      Offer
+    </a>
+    <a
+      href={BUY_MAILTO}
+      class="tap px-5 rounded-2xl gradient-cta text-sm font-bold text-[#0a0a0f] no-underline whitespace-nowrap shadow-lg shadow-[#22f5ff]/20"
+    >
+      Buy Now
+    </a>
+  </div>
+</section>
+
+<script>
+  const bar = document.getElementById('sticky-cta');
+  let lastY = window.scrollY;
+
+  window.addEventListener(
+    'scroll',
+    () => {
+      if (!bar) return;
+      const current = window.scrollY;
+      // Hide while scrolling down near the top, show otherwise.
+      const hide = current > lastY && current > 140;
+      bar.style.transform = hide ? 'translateY(100%)' : 'translateY(0)';
+      lastY = current;
+    },
+    { passive: true },
+  );
+</script>

@@ -1,6 +1,6 @@
 name = "ailegalguard-com-v1"
 main = "src/worker.ts"
-compatibility_date = "2026-06-01"
+compatibility_date = "2026-09-15"
 workers_dev = false
 preview_urls = false
 
@@ -11,6 +11,10 @@ custom_domain = true
 [[routes]]
 pattern = "www.ailegalguard.com"
 custom_domain = true
+
+[[kv_namespaces]]
+binding = "INQUIRIES"
+id = "301cb5dca8354391896fc7daacc78d96"
 
 [assets]
 directory = "./dist"

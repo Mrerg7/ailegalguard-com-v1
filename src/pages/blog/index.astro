@@ -1,0 +1,82 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog')).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+
+const title = 'Domain Buying Guides & AI Law Insights | ailegalguard.com';
+const description =
+  'Practical guides on premium domain valuation, safe domain purchases with escrow, domain investing, and the AI regulation driving the category.';
+---
+
+<BaseLayout title={title} description={description}>
+  <section class="mx-auto max-w-4xl px-6 pb-20 pt-32 sm:pt-36">
+    <div class="mb-12">
+      <div class="mb-4 inline-block rounded-full bg-white/5 px-4 py-1 text-xs font-medium tracking-[1.5px] text-white/60">
+        INSIGHTS
+      </div>
+      <h1 class="section-header tracking-[-0.035em]">Guides for serious domain buyers.</h1>
+      <p class="mt-5 max-w-2xl text-lg text-white/65">
+        Valuation method, escrow mechanics, portfolio discipline, and the regulatory trends
+        shaping demand in AI law. Written for people about to move real money.
+      </p>
+    </div>
+
+    <div class="space-y-5">
+      {
+        posts.map((post) => (
+          <article class="reveal group rounded-3xl border border-white/10 bg-white/[0.02] p-7 transition-colors hover:border-[#22f5ff]/30 sm:p-8">
+            <div class="mb-3 flex flex-wrap items-center gap-x-4 gap-y-2 text-xs text-white/45">
+              <span class="rounded-full bg-[#22f5ff]/10 px-3 py-1 font-semibold uppercase tracking-[1.5px] text-[#22f5ff]">
+                {post.data.category}
+              </span>
+              <time datetime={post.data.pubDate.toISOString()}>
+                {post.data.pubDate.toLocaleDateString('en-US', {
+                  month: 'long',
+                  day: 'numeric',
+                  year: 'numeric',
+                })}
+              </time>
+              <span>{post.data.readingMinutes} min read</span>
+            </div>
+
+            <h2 class="text-2xl font-semibold tracking-tight sm:text-3xl">
+              <a href={`/blog/${post.id}/`} class="no-underline text-white transition-colors group-hover:text-[#22f5ff]">
+                {post.data.title}
+              </a>
+            </h2>
+
+            <p class="mt-3 text-white/65">{post.data.description}</p>
+
+            <a
+              href={`/blog/${post.id}/`}
+              class="mt-5 inline-flex min-h-[48px] items-center gap-x-2 text-sm font-semibold text-[#22f5ff] no-underline transition-all group-hover:gap-x-3"
+            >
+              Read the guide
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" d="M14 5l7 7-7 7m-4-7h11" />
+              </svg>
+            </a>
+          </article>
+        ))
+      }
+    </div>
+
+    <div class="mt-14 rounded-3xl border border-[#22f5ff]/20 bg-gradient-to-br from-[#0a0a0f] via-[#22f5ff]/5 to-[#0a0a0f] p-8 text-center sm:p-10">
+      <h2 class="text-2xl font-semibold tracking-tight sm:text-3xl">Ready to skip the research?</h2>
+      <p class="mx-auto mt-3 max-w-lg text-white/65">
+        ailegalguard.com is a one-of-one asset, listed publicly at $9,997 with escrow-protected transfer.
+      </p>
+      <div class="mt-6 flex flex-col justify-center gap-3 sm:flex-row">
+        <a href="/#pricing" class="tap rounded-2xl bg-white px-8 font-semibold text-[#0a0a0f] no-underline transition hover:bg-white/90">
+          See the price
+        </a>
+        <a href="/#inquire" class="tap rounded-2xl border border-white/20 px-8 font-semibold text-white/80 no-underline transition hover:border-white/45">
+          Make an offer
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

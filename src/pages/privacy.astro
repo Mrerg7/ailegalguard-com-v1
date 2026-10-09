@@ -1,0 +1,131 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE } from '../consts';
+
+const title = 'Privacy Policy | ailegalguard.com';
+const description =
+  'How ailegalguard.com collects, stores and protects inquiry data — including what is kept in Cloudflare Workers KV, how long it is retained, and your options.';
+---
+
+<BaseLayout title={title} description={description}>
+  <section class="mx-auto max-w-3xl px-6 pb-20 pt-32 sm:pt-36">
+    <div class="mb-4 inline-block rounded-full bg-white/5 px-4 py-1 text-xs font-medium tracking-[1.5px] text-white/60">
+      LEGAL
+    </div>
+    <h1 class="section-header tracking-[-0.035em]">Privacy Policy</h1>
+    <p class="mt-4 text-sm text-white/45">Last updated {SITE.updated}</p>
+
+    <div class="article-body mt-9">
+      <p>
+        This policy explains what information this website collects, why it is collected, where it
+        is stored, and what you can ask us to do about it. It applies only to this website and the
+        inquiry forms on it.
+      </p>
+
+      <h2>What we collect</h2>
+      <p>Two categories of information are handled here:</p>
+      <ul>
+        <li>
+          <strong>Inquiry and offer details</strong> — the name, email address, organization,
+          offered amount, preferred timeline and message you choose to submit through the inquiry
+          form.
+        </li>
+        <li>
+          <strong>Newsletter / resource requests</strong> — the email address you enter to request
+          the buyer's checklist.
+        </li>
+        <li>
+          <strong>Basic request metadata</strong> — the timestamp, approximate country, referring
+          page, and a truncated user agent string attached automatically by the hosting platform.
+          We do not use this to build profiles.
+        </li>
+      </ul>
+
+      <h2>What we do not collect</h2>
+      <ul>
+        <li>No payment card details. Payments for a domain are handled by an escrow provider, not by this site.</li>
+        <li>No account registration, passwords, or stored credentials.</li>
+        <li>No advertising or cross-site tracking cookies.</li>
+        <li>We do not buy, enrich, or append data from third-party brokers.</li>
+      </ul>
+
+      <h2>How submissions are stored</h2>
+      <p>
+        Form submissions are sent to a serverless endpoint on this site and stored in
+        <strong>Cloudflare Workers KV</strong> on Cloudflare's edge network. Records are retained
+        for up to <strong>365 days</strong> and then automatically deleted, unless a longer period
+        is required to complete a transaction you started or to meet a legal obligation.
+      </p>
+      <p>
+        The form is protected by a honeypot field, a minimum time-to-submit check, and per-address
+        rate limiting. These exist to stop automated abuse; they are not used to profile visitors.
+      </p>
+
+      <h2>How we use it</h2>
+      <ul>
+        <li>To respond to your inquiry, offer, or request — and only for that purpose.</li>
+        <li>To negotiate and complete a domain transaction if you choose to proceed.</li>
+        <li>To send the resource you specifically asked for.</li>
+      </ul>
+      <p>
+        <strong>We do not sell, rent, trade, or share your information with advertisers.</strong>
+        We do not add you to a marketing list because you submitted an inquiry.
+      </p>
+
+      <h2>Analytics</h2>
+      <p>
+        This site uses <strong>Cloudflare Web Analytics</strong>, a privacy-oriented, cookie-free
+        measurement tool operated by Cloudflare. It does not use cookies and does not track you
+        across other websites.
+      </p>
+
+      <h2>Third-party links</h2>
+      <p>
+        Pages may link to external services such as escrow providers or registries. Those sites
+        operate under their own privacy policies, which we do not control.
+      </p>
+
+      <h2>Your rights</h2>
+      <p>
+        Depending on where you live, you may have the right to request access to, correction of, or
+        deletion of the personal information we hold about you, and to object to or restrict its
+        use. To exercise any of those rights, email us — see below. We will respond within a
+        reasonable period and in any case within 30 days.
+      </p>
+
+      <h2>Security</h2>
+      <p>
+        The site is served exclusively over HTTPS with HTTP→HTTPS enforcement and HSTS. Access to
+        stored records requires authenticated Cloudflare account credentials. No transmission
+        method over the internet is completely secure, but we do not collect more than we need.
+      </p>
+
+      <h2>Children</h2>
+      <p>
+        This site is directed at professional buyers and is not intended for children under 16. We
+        do not knowingly collect information from them.
+      </p>
+
+      <h2>Changes to this policy</h2>
+      <p>
+        We may update this page to reflect changes in how the site works. The "last updated" date
+        at the top of this page always reflects the current version.
+      </p>
+
+      <h2>Contact</h2>
+      <p>
+        Questions about this policy or your data:
+        <a href={`mailto:${SITE.acquisitionEmail}`}>{SITE.acquisitionEmail}</a>.
+      </p>
+    </div>
+
+    <div class="mt-12 flex flex-col gap-3 sm:flex-row">
+      <a href="/" class="tap rounded-2xl bg-white px-7 font-semibold text-[#0a0a0f] no-underline transition hover:bg-white/90">
+        Back to the domain
+      </a>
+      <a href="/blog/" class="tap rounded-2xl border border-white/20 px-7 font-semibold text-white/80 no-underline transition hover:border-white/45">
+        Read the guides
+      </a>
+    </div>
+  </section>
+</BaseLayout>

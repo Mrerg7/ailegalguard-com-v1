@@ -1,7 +1,10 @@
 /*
+  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
   X-Frame-Options: DENY
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: accelerometer=(), autoplay=(), camera=(), display-capture=(), encrypted-media=(), fullscreen=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), midi=(), payment=(), picture-in-picture=(), usb=(), xr-spatial-tracking=()
+  Content-Security-Policy: default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://imagedelivery.net; font-src 'self'; connect-src 'self' https://static.cloudflareinsights.com https://a.nel.cloudflare.com; form-action 'self'; upgrade-insecure-requests
 
 /
   Link: <https://ailegalguard.com/>; rel="canonical"
@@ -25,6 +28,9 @@
   Content-Type: application/xml
 
 /_astro/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/fonts/*
   Cache-Control: public, max-age=31536000, immutable
 
 /favicon.svg

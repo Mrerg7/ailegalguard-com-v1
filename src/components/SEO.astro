@@ -4,11 +4,19 @@ import { SITE } from '../consts';
 interface Props {
   title?: string;
   description?: string;
+  type?: 'website' | 'article';
+  noindex?: boolean;
+  publishedTime?: string;
+  jsonLd?: Record<string, unknown>[];
 }
 
 const {
   title = SITE.title,
   description = SITE.description,
+  type = 'website',
+  noindex = false,
+  publishedTime,
+  jsonLd: extraJsonLd = [],
 } = Astro.props;
 
 const pathname =
@@ -19,15 +27,16 @@ const pathname =
       : `${Astro.url.pathname}/`;
 const canonical = new URL(pathname, SITE.url).href;
 
-const OG_IMAGE = 'https://imagedelivery.net/-sPAUAWeA405NiWJ0SNIQA/4b7071f3-bd76-48c7-9a52-c8635f273f00/public';
+const OG_IMAGE =
+  'https://imagedelivery.net/-sPAUAWeA405NiWJ0SNIQA/4b7071f3-bd76-48c7-9a52-c8635f273f00/public?width=1200&height=630&quality=80&format=auto';
 
-const jsonLd = [
+const baseJsonLd: Record<string, unknown>[] = [
   {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
     name: SITE.name,
     url: SITE.url,
-    description,
+    description: SITE.description,
     inLanguage: 'en-US',
   },
   {
@@ -45,10 +54,11 @@ const jsonLd = [
     offers: {
       '@type': 'Offer',
       url: SITE.url,
-      price: '9997.00',
-      priceCurrency: 'USD',
+      price: SITE.price,
+      priceCurrency: SITE.currency,
       availability: 'https://schema.org/InStock',
       priceValidUntil: '2027-12-31',
+      itemCondition: 'https://schema.org/NewCondition',
       seller: {
         '@type': 'Organization',
         name: 'Desert Rich',
@@ -89,32 +99,15 @@ const jsonLd = [
         },
       },
     },
-    review: {
-      '@type': 'Review',
-      author: {
-        '@type': 'Organization',
-        name: SITE.name,
-      },
-      reviewRating: {
-        '@type': 'Rating',
-        ratingValue: 5,
-        bestRating: 5,
-      },
-    },
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: 5,
-      bestRating: 5,
-      reviewCount: 1,
-    },
-    image: OG_IMAGE,
+    image: [OG_IMAGE],
   },
   {
     '@context': 'https://schema.org',
     '@type': 'Organization',
-    name: SITE.name,
+    name: 'Desert Rich',
     url: SITE.url,
     logo: OG_IMAGE,
+    email: SITE.acquisitionEmail,
     contactPoint: {
       '@type': 'ContactPoint',
       contactType: 'sales',
@@ -123,6 +116,8 @@ const jsonLd = [
     },
   },
 ];
+
+const jsonLd = [...baseJsonLd, ...extraJsonLd];
 ---
 
 <meta charset="UTF-8" />
@@ -130,11 +125,35 @@ const jsonLd = [
 <link rel="canonical" href={canonical} />
 <title>{title}</title>
 <meta name="description" content={description} />
-<meta name="robots" content="index, follow" />
+<meta name="robots" content={noindex ? 'noindex, nofollow' : 'index, follow, max-image-preview:large'} />
 <meta name="google-site-verification" content="5TmoSuyFlzGNQTuF6BGHDqo82EQV7tSiiDFOV_mv3Fg" />
 <meta name="theme-color" content="#0a0a0f" />
+<meta name="author" content="Desert Rich" />
 
-<meta property="og:type" content="website" />
+<!-- Self-hosted fonts: preload the two faces used above the fold -->
+<link
+  rel="preload"
+  href="/fonts/inter-latin-variable.woff2"
+  as="font"
+  type="font/woff2"
+  crossorigin
+/>
+<link
+  rel="preload"
+  href="/fonts/space-grotesk-latin-variable.woff2"
+  as="font"
+  type="font/woff2"
+  crossorigin
+/>
+<link rel="preconnect" href="https://imagedelivery.net" crossorigin />
+<link
+  rel="preload"
+  as="image"
+  href="https://imagedelivery.net/-sPAUAWeA405NiWJ0SNIQA/4b7071f3-bd76-48c7-9a52-c8635f273f00/public?width=1920&quality=72&format=auto"
+  fetchpriority="high"
+/>
+
+<meta property="og:type" content={type} />
 <meta property="og:site_name" content={SITE.name} />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
@@ -146,13 +165,19 @@ const jsonLd = [
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 
+{type === 'article' && publishedTime && (
+  <meta property="article:published_time" content={publishedTime} />
+)}
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content={title} />
 <meta name="twitter:description" content={description} />
 <meta name="twitter:image" content={OG_IMAGE} />
 <meta name="twitter:image:alt" content={`${SITE.name} — Premium domain for AI law, compliance, and legal protection`} />
 
-<link rel="icon" href="https://imagedelivery.net/-sPAUAWeA405NiWJ0SNIQA/4b7071f3-bd76-48c7-9a52-c8635f273f00/public" />
-<link rel="apple-touch-icon" href="https://imagedelivery.net/-sPAUAWeA405NiWJ0SNIQA/4b7071f3-bd76-48c7-9a52-c8635f273f00/public" />
+<link rel="icon" href="/favicon.svg" />
+<link
+  rel="apple-touch-icon"
+  href="https://imagedelivery.net/-sPAUAWeA405NiWJ0SNIQA/4b7071f3-bd76-48c7-9a52-c8635f273f00/public?width=180&height=180&quality=80&format=auto"
+/>
 
 <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
